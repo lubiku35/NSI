@@ -1,0 +1,234 @@
+html, body {
+    margin: 0;
+    min-height: 100vh;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f7f7f7;
+}
+
+/* MAIN */
+
+#main-container {
+    min-height: 60vh;
+}
+
+/* LOGIN */
+.full-height-login, .full-height-register {
+    height: 76.8vh;
+}
+
+.landing-container {
+    min-height: 50vh;
+    max-height: 80vh;
+}
+
+.reg-form-container {
+    max-width: 700px;
+    margin: auto; 
+    padding: 50px 20px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    border-radius: 8px; 
+    background: #fff;
+}
+
+/* DASHBOARD */
+
+#action-column {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    column-gap: 1em;
+}
+
+.header-section {
+    color: rgb(15, 15, 15);
+    padding: 20px 0;
+}
+
+.header-section h1 {
+    font-weight: 900;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn {
+    border-radius: 20px;
+}
+
+.btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    border-radius: .2rem;
+}
+
+.btn-warning {
+    color: #ffffff;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+.btn-warning:hover {
+    color: #ffffff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+.btn-danger {
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.btn-danger:hover {
+    color: #ffffff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+#dataInsertForm .form-control {
+    border-radius: 0.25rem;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#dataInsertForm .form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#dataInsertForm .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    width: 50%; /* Set a width for larger click area and visual impact */
+}
+
+#dataInsertForm .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#dataInsertForm .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* FORM */
+
+.form-control {
+    border-radius: 20px; /* Zaoblené okraje vstupních polí */
+}
+
+.btn-primary {
+    border-radius: 20px; /* Zaoblené okraje tlačítka */
+    width: 100%; /* Plná šířka tlačítka */
+    padding: 8px; /* Větší padding tlačítka */
+}
+
+/* FOOTER */
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* MODAL DIALOG */
+
+.modal-content {
+    border-radius: 15px; /* Rounded corners for the modal */
+}
+
+.modal-header, .modal-footer {
+    border: none; /* Remove borders within the modal */
+}
+
+.modal-title {
+    font-weight: bold; /* Bold title */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Adjust the primary button color if needed */
+}
+
+.close {
+    text-shadow: none;
+    opacity: 1;
+}
+
+.close:hover {
+    color: #f00;
+    text-shadow: none;
+    opacity: 0.75;
+}
+
+/* Optional: additional styling for the 'x' button to make it nicer */
+.close {
+    font-size: 1rem; /* Make 'x' larger */
+    font-weight: normal; /* Normal weight looks better on some fonts */
+}
+
+/* Modal content styling */
+.modal-content {
+    position: relative; /* Position relative for the absolute close button */
+}
+
+/* Update button styling */
+#submitUpdate {
+    width: 100%; /* Full width for a uniform look */
+    border-radius: 4px; /* Match modal border radius */
+}

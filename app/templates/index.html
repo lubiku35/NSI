@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<div class="container landing-container mt-5">
+    <h1 class="text-center">Welcome Heading</h1>
+    <h2 class="text-center mb-5">Hello, {{ user }}!</h2>
+    
+    <!-- Features or Introduction Section -->
+    <div class="row text-center mt-5 h-100">
+        <div class="col-md-4">
+            <h3>Function 1</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Function 2</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fuga culpa illum consequatur ea atque.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Function 3</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+
+    <!-- Call to Action Button -->
+    <div class="row text-center align-items-center justify-content-sm-center mt-5">
+        <div class="col-md-2">
+            <a href="/register" class="btn btn-primary btn-lg">Register Now</a>
+        </div>
+        <div class="col-md-2">
+            <a href="/dashboard" class="btn btn-primary btn-lg">Dashboard View</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
