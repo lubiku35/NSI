@@ -1,40 +1,48 @@
 from flask import Blueprint, render_template, request, jsonify
-
-from model.data_handler  import delete_data
+from model.data_handler  import load_by_id, load_data, delete_data, update_data, create_data
 
 api_routes = Blueprint('api_routes', __name__)
-
-# Create an item
-@api_routes.route('/api/items', methods=['POST'])
-def create_item():
-    data = request.get_json()
-    if data:
-        return jsonify(data), 200
-    else:
-        return jsonify({'message': 'Failed to create an item'}), 400
 
 # Read all items
 @api_routes.route('/api/items', methods=['GET'])
 def read_items():
-    return jsonify({'message': 'Read all items'}), 200
+    return jsonify(load_data()), 200
+
+# Create an item
+@api_routes.route('/api/item', methods=['POST'])
+def create_item():
+    data = request.get_json()
+
+    if data: is_created = create_data(data) 
+    else: return jsonify({'message': 'Failed to load data'}), 400
+
+    if is_created: return jsonify({'message': f'Item created'}), 200
+    else: return jsonify({'message': 'Failed to create an item'}), 404
 
 # Read an item
 @api_routes.route('/api/item/<int:item_id>', methods=['GET'])
 def read_item(item_id):
-    return jsonify({'message': 'Read an item'}), 200
+    if isinstance(item_id, int): item = load_by_id(item_id)
+    else: return jsonify({'message': 'Invalid item id'}), 400
+
+    if item != None: return jsonify(item), 200
+    else: return jsonify({'message': 'Item not found'}), 404
 
 # Update an item
-@api_routes.route('/api/items/<int:item_id>', methods=['PUT'])
+@api_routes.route('/api/item/<int:item_id>', methods=['PUT'])
 def update_item(item_id):
     data = request.get_json()
-    if data:
-        return jsonify(data), 200
-    else:
-        return jsonify({'message': 'Failed to update an item'}), 400
+    if data: is_updated =  update_data(item_id, data) 
+    else: return jsonify({'message': 'Failed to load data'}), 400
+
+    if is_updated: return jsonify({'message': f'Item updated - {item_id}'}), 200
+    else: return jsonify({'message': 'Failed to update an item'}), 404
 
 # Delete an item
-@api_routes.route('/api/items/<int:item_id>', methods=['DELETE'])
+@api_routes.route('/api/item/<int:item_id>', methods=['DELETE'])
 def delete_item(item_id):
-    is_deleted = delete_data(item_id)
-    if is_deleted: return jsonify({'message': 'Item deleted'}), 200
+    if isinstance(item_id, int): is_deleted = delete_data(item_id)
+    else: return jsonify({'message': 'Invalid item id'}), 400
+
+    if is_deleted: return jsonify({'message': f'Item deleted - {item_id}'}), 200
     else: return jsonify({'message': 'Failed to delete an item'}), 404
