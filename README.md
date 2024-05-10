@@ -13,6 +13,6 @@ The mini-project 01 is available in the `mini_project_01` branch is the base for
 
 # Mini-Project 02
 
-> *Branch*: mini_project_01
+> *Branch*: mini_project_02
 
 In mini-project 02, available in the `mini_project_02` branch, the application was enriched with API functionality with using AJAX on the client side and also with proper routing on the server side. 
