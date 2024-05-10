@@ -21,6 +21,11 @@ def save_data(data):
 def update_data(item_id, new_data):
     data = load_data()
     
+    # Check ID Value URL and JSON are same and delete json id then
+    if 'id' not in new_data: return False
+    if item_id != new_data['id']: return False
+    del new_data['id']
+
     # Check Values
     if ('temp' not in new_data) or ('timestamp' not in new_data): return False
     

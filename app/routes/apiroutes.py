@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 from model.data_handler  import load_by_id, load_data, delete_data, update_data, create_data
-
+import sys
 api_routes = Blueprint('api_routes', __name__)
 
 # Read all items
@@ -8,16 +8,10 @@ api_routes = Blueprint('api_routes', __name__)
 def read_items():
     return jsonify(load_data()), 200
 
-# Create an item
-@api_routes.route('/api/item', methods=['POST'])
-def create_item():
-    data = request.get_json()
-
-    if data: is_created = create_data(data) 
-    else: return jsonify({'message': 'Failed to load data'}), 400
-
-    if is_created: return jsonify({'message': f'Item created'}), 200
-    else: return jsonify({'message': 'Failed to create an item'}), 404
+# Read items by count
+@api_routes.route('/api/items/<int:items>', methods=['GET'])
+def read_items_by_count(items):
+    return jsonify(load_data()[:items]), 200
 
 # Read an item
 @api_routes.route('/api/item/<int:item_id>', methods=['GET'])
@@ -27,6 +21,19 @@ def read_item(item_id):
 
     if item != None: return jsonify(item), 200
     else: return jsonify({'message': 'Item not found'}), 404
+
+
+# Create an item
+@api_routes.route('/api/item', methods=['POST'])
+def create_item():
+    data = request.get_json()
+
+    if data: is_created = create_data(data) 
+    else: return jsonify({'message': 'Failed to load data'}), 400
+
+
+    if is_created: return jsonify(data), 200
+    else: return jsonify({'message': 'Failed to create an item'}), 404
 
 # Update an item
 @api_routes.route('/api/item/<int:item_id>', methods=['PUT'])
