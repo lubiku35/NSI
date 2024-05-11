@@ -232,3 +232,33 @@ body {
     width: 100%; /* Full width for a uniform look */
     border-radius: 4px; /* Match modal border radius */
 }
+
+/* Notification Bar Styles */
+.notification-bar {
+    display: none; /* Hidden by default */
+    width: 30%;
+    height: auto;
+    margin: 0 auto;
+    position: fixed;
+    /* Center the notification bar */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px; /* 20px from the bottom */
+
+    background-color: #dc3545; /* Default color for error */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1050; /* Higher than the nav bar if needed */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.notification-bar.success {
+    background-color: #28a745; /* Success color */
+}
+
+.notification-bar.error {
+    background-color: #dc3545; /* Error color */
+}

@@ -19,7 +19,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Custom JS -->
     <script src="static/js/dashboard.js" defer></script>
-    
+    <script src="static/js/modal.js" defer></script>
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -32,26 +33,30 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
             </ul>
-            <div class="container-fluid">
-                <span class="navbar-text text-success">
-                    {{ user }}
+            <!-- If user != Guest print logout else just guest-->
+            {% if user != 'Guest' %}
+                <span class="navbar-text">
+                    <a href="/logout" class="btn btn-outline-light">Logout</a>
                 </span>
-            </div>
-            <form class="form-inline my-2 my-lg-0 d-flex">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-            </form>
+            {% else %}
+                <span class="navbar-text">
+                    <a href="/login" class="btn btn-outline-light">Login</a>
+                </span>
+            {% endif %}
         </div>
     </nav>
 
+   <!-- Notification Message Section at Top -->
+    <div id="notificationBar" class="notification-bar">
+        <p id="notificationMessage">{{ message }}</p>
+    </div>
+    
     <!-- Main Section -->
     <div id="main-container" class="container">
         {% block content %}{% endblock %}
@@ -67,5 +72,23 @@
     <!-- Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    var messageType = '{{ messages[0][0] }}';
+                    var messageText = '{{ messages[0][1] }}';
+        
+                    // Set message text and add class based on type
+                    var notificationBar = $('#notificationBar');
+                    $('#notificationMessage').text(messageText);
+                    notificationBar.addClass(messageType); // 'success' or 'error'
+        
+                    // Slide down to show and slide up to hide after 2 seconds
+                    notificationBar.slideDown(500).delay(2000).slideUp(500);
+                {% endif %}
+            {% endwith %}
+        });
+    </script>
 </body>
 </html>

@@ -15,9 +15,19 @@
                 <div class="card-body">
                     <i class="fas fa-thermometer-half fa-2x"></i>
                     <h6 class="card-title mt-3">Last Temperature</h6>
-                    <div class="display-4">{{ data[-1].temp }} °C</div>
+                    <div class="display-4">
+                        {% if data %}
+                        {{ data[-1].temp }} °C
+                        {% else %}
+                         No data
+                        {% endif %}
+                    </div>
                     <div class="card-text">
+                        {% if data %}
                         Recorded at {{ data[-1].timestamp }}
+                        {% else %}
+                            No data
+                        {% endif %}
                     </div>
                 </div>
             </div>

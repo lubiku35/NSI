@@ -3,29 +3,31 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+
 <div class="container mt-5 full-height-register">
     <div class="reg-form-container">
         <h2 class="mb-4">Register</h2>
-        <form id="registrationForm">
+        <form id="registrationForm" method="POST" action="/register">
             <div class="mb-3">
                 <label for="fullName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fullName" required>
+                <input type="text" class="form-control" id="fullName" name="name" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" equired>
                 <div id="emailHelp" class="form-text">Your email address will be on safe place.</div>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" required>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Password Repeat</label>
-                <input type="password" class="form-control" id="confirmPassword" required>
+                <input type="password" class="form-control" id="confirmPassword" name="password-repeat" required>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
-</div>
+</div>    
+
 {% endblock %}

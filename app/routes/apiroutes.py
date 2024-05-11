@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 from model.data_handler  import load_by_id, load_data, delete_data, update_data, create_data
-import sys
+
 api_routes = Blueprint('api_routes', __name__)
 
 # Read all items
@@ -21,7 +21,6 @@ def read_item(item_id):
 
     if item != None: return jsonify(item), 200
     else: return jsonify({'message': 'Item not found'}), 404
-
 
 # Create an item
 @api_routes.route('/api/item', methods=['POST'])
