@@ -11,34 +11,20 @@ Scenario:
 - The Python Flask application is displaying the data on a web page.
 """
 
-import time, serial, datetime, json, random
+import time, json, random, utime
 
-SERIAL_PORT = "/dev/ttyACM0"
-SERIAL_BAUDRATE = 9600
-
-# Open the serial port
-try:
-    ser = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE)
-    # Timeout for one second and flush the input buffer
-    ser.timeout = 1
-    ser.flushInput()
-except serial.SerialException:
-    print("Error: Could not open serial port.")
-    exit()
+def get_formatted_time():
+    year, month, mday, hour, minute, second, weekday, yearday = utime.localtime()[:8]
+    return f"{year}-{month:02d}-{mday:02d} {hour:02d}:{minute:02d}:{second:02d}"
 
 while True:
-    # Wait for the serial port to be ready
-    while not ser.isOpen():
-        time.sleep(1)
-    
-    # Create the data
     data = {
-        "datetime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "temp": random.randint(-25, 45)
-    }   
+        "temp": round(random.uniform(-10, 40), 2),
+        "timestamp": get_formatted_time()
+    }
+    
+    json_data = json.dumps(data)
+    
+    print(b'' + json_data.encode())
 
-    # Send the data
-    ser.write(json.dumps(data).encode())
-
-    # Wait 20 seconds
-    time.sleep(20)
+    time.sleep(60)
