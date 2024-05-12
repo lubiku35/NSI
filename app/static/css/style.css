@@ -262,3 +262,17 @@ body {
 .notification-bar.error {
     background-color: #dc3545; /* Error color */
 }
+
+.form-control-span {
+    display: none;
+    padding-top: 5px;
+    font-size: 0.8rem;
+}
+
+.form-error {
+    background-color: #dc3545; /* Error color */
+}
+
+.form-success {
+    background-color: #28a745; /* Success color */
+}
