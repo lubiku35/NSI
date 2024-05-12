@@ -16,3 +16,8 @@ The mini-project 01 is available in the `mini_project_01` branch is the base for
 > *Branch*: mini_project_02
 
 In mini-project 02, available in the `mini_project_02` branch, the application was enriched with API functionality with using AJAX on the client side and also with proper routing on the server side. 
+
+# Mini-Project 03
+
+In mini-project 03, which is available via branch `mini_project_03`, the data storage has been converted from json to sqlite database. The application was also enriched by user management (registration, login, session) both on the server and client side and by data migration to the database.
+
